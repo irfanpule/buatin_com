@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUmetaTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateUmetaTable extends Migration
      */
     public function up()
     {
-        Schema::create('umeta', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('meta_key');
-            $table->string('meta_value');
+            $table->string('post_title');
+            $table->text('post_content');
+            $table->text('post_status');
             $table->timestamps();
 
             $table->foreign('user_id')
@@ -34,6 +35,6 @@ class CreateUmetaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('umeta');
+        Schema::dropIfExists('posts');
     }
 }
