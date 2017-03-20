@@ -32,3 +32,18 @@
     </div>
 </div>
 @endsection
+
+@section('js')
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpibf5sVId4K-7OSMdpzn8sJjRqxbhFP4&libraries=places"></script>
+
+    <script>
+        function initialize() {
+            
+            var input = document.getElementById('searchTextField');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+        }
+    
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+@endsection
