@@ -30,8 +30,9 @@
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
                     <li>
-                        <a href="" class="btn btn-primary"><i class="fa fa-plus"> </i> Iklan</a>
+                        <button type="button" class="btn btn-default navbar-btn">Iklan</button>
                     </li>
+                    
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <img src="{{ Auth::user()->avatar }}" class="img-circle avatar-25">
