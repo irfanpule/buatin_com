@@ -19,10 +19,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('user/pengaturan', function() {
-    return view('contents.pengaturan');
-})->name('pengaturan');
+
+// Settings
+Route::get('user/{id}/pengaturan', 'ProfileController@view')->name('settings');
+Route::post('user/pengaturan', 'ProfileController@store')->name('profile');
+
+
+
+
 
 // OAuth Routes
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+// Ajax
+Route::get('ajax-kab/{provId}', 'ComboChainController@ProvId');

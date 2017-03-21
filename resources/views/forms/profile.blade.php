@@ -1,5 +1,9 @@
-{!! Form::open() !!}
+{!! Form::open(['route'=>'profile', 'files'=> true]) !!}
     <div class="row">
+        <div class="col-md-12"> 
+            <h3> {{ $user->name }} </h3>
+        </div>
+
         <div class="col-md-4">
             <div class="form-group">
                 <label for="exampleInputFile">Foto Profil</label>
@@ -25,11 +29,11 @@
         <div class="col-md-6">
             <div class="form-group">
                 {{ Form::label('InputProvinsi', 'Provinsi')}}
-                {{ Form::select('provinsi', [], null, ['class' => 'form-control', 'placeholder' => 'pilih Provinsi']) }}
+                {{ Form::select('provinsi', $prov_lists , null, ['id' => 'prov_id' ,'class' => 'form-control', 'placeholder' => 'pilih Provinsi']) }}
             </div>
             <div class="form-group">
                 {{ Form::label('InputKabKota', 'Kab / Kota')}}
-                {{ Form::select('kab-kota', [], null, ['class' => 'form-control', 'placeholder' => 'pilih Kab / Kota']) }}
+                {{ Form::select('kab-kota', [], null, ['id'=>'kab_id' ,'class' => 'form-control', 'placeholder' => 'pilih Kab / Kota']) }}
             </div>
             <div class="form-group">
                 {{ Form::label('searchTextField', 'Alamat')}}

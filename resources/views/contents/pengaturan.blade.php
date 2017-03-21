@@ -33,9 +33,12 @@
 </div>
 @endsection
 
+
+{{-- add js on header --}}
 @section('js')
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpibf5sVId4K-7OSMdpzn8sJjRqxbhFP4&libraries=places"></script>
 
+    {{-- Autocomplete Google Map --}}
     <script>
         function initialize() {
             
@@ -46,4 +49,28 @@
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
+@endsection
+
+
+{{-- add js on footer --}}
+@section('js-footer')
+    <script>
+        $('#prov_id').on('change', function(e){
+            console.log(e);
+
+            var provId = e.target.value;
+
+            //ajax
+            $.get('/ajax-kab/' + provId, function(data){
+
+            //if success data
+
+            $('#kab_id').empty();
+            $.each(data, function(index, kabupatensObj){
+                $('#kab_id').append('<option value="' +kabupatensObj.id_kab+ '">' +kabupatensObj.nama+ '</option>');
+            });
+
+            });
+        });
+    </script>
 @endsection

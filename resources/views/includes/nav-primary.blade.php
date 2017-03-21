@@ -44,7 +44,7 @@
                                 <a href="">Profil</a> 
                             </li>
                             <li>
-                                <a href="{{ route('pengaturan') }}">Pengaturan</a> 
+                                <a href="{{ route('settings', ['id' => Auth::user()->id]) }}">Pengaturan</a> 
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}"
