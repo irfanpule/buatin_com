@@ -20,14 +20,14 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="profil"> 
-                                @if($umeta->count() <= 0)
-                                    @include('forms.profile')
-                                @else
-                                    @include('forms.profile-edit')
-                                @endif 
+                                @include('forms.profile')
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="ubah-password"> @include('forms.change-password') </div>
-                            <div role="tabpanel" class="tab-pane" id="email">...</div>
+                            <div role="tabpanel" class="tab-pane" id="ubah-password"> 
+                                @include('forms.change-password') 
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="email">
+                                ....
+                            </div>
                         </div>
                     </div>
                 </div>

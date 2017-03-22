@@ -34,7 +34,7 @@
         </div>
     </div>
 
-{!! Form::open(['route'=>'profile', 'id' => Auth::user()->id]) !!}
+{!! Form::model($umeta,['route'=>'profile', 'id' => Auth::user()->id]) !!}
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
@@ -72,12 +72,16 @@
                 {{ Form::label('InputPINBB', 'PIN BBM')}}
                 {{ Form::text('pin_bbm',null, ['class' => 'form-control', 'placeholder' => 'PIN BBM']) }}
             </div>
+            <div class="form-group">
+                {{ Form::label('InputWebsite', 'Website')}}
+                {{ Form::text('website',null, ['class' => 'form-control', 'placeholder' => 'PIN BBM']) }}
+            </div>
         </div>
 
         
         <div class="col-md-12">
         <hr>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
         </div>
     </div>
 {!! Form::close() !!}
