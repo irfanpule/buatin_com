@@ -18,7 +18,7 @@ class CreateImageTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('post_id')->unsigned();
             $table->string('image_path');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')

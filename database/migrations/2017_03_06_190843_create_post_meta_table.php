@@ -17,7 +17,7 @@ class CreatePostMetaTable extends Migration
             $table->increments('id');
             $table->integer('post_id')->unsigned();
             $table->string('meta_key', 100);
-            $table->string('meta_value');
+            $table->string('meta_value')->nullable();
             $table->timestamps();
 
             $table->foreign('post_id')

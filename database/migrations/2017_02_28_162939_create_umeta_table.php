@@ -17,7 +17,7 @@ class CreateUmetaTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('meta_key');
-            $table->string('meta_value');
+            $table->string('meta_value')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
