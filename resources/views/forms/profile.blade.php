@@ -8,10 +8,7 @@
     </div>
 @endif
 
-    <div class="row">
-        <div class="col-md-12"> 
-            <h3> {{ $user->name }} </h3>
-        </div>
+    <div class="row" style="margin-top:30px;">
 
         <div class="col-md-4">
             <div class="form-group">
@@ -32,6 +29,22 @@
         <div class="col-md-12">
             <hr>
         </div>
+        
+        <div class="col-md-6">
+            Nama Usaha / Jasa 
+            <h3> {{ $user->display_name }} </h3>
+        </div>
+
+        <div class="col-md-6">
+            Nama Pengguna
+            <h3> {{ $user->display_name }} </h3>
+        </div>
+
+        <div class="col-md-12">
+            <hr>
+        </div>
+
+        
     </div>
 
 {!! Form::model($umeta,['route'=>'profile', 'id' => Auth::user()->id]) !!}
