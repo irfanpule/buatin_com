@@ -19,7 +19,13 @@
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="profil"> @include('forms.profile') </div>
+                            <div role="tabpanel" class="tab-pane active" id="profil"> 
+                                @if($umeta->count() <= 0)
+                                    @include('forms.profile')
+                                @else
+                                    @include('forms.profile-edit')
+                                @endif 
+                            </div>
                             <div role="tabpanel" class="tab-pane" id="ubah-password"> @include('forms.change-password') </div>
                             <div role="tabpanel" class="tab-pane" id="email">...</div>
                         </div>
@@ -54,23 +60,35 @@
 
 {{-- add js on footer --}}
 @section('js-footer')
+    {{--  --}}
     <script>
-        $('#prov_id').on('change', function(e){
-            console.log(e);
 
-            var provId = e.target.value;
-
+        function getDataKab(provId){
             //ajax
             $.get('/ajax-kab/' + provId, function(data){
 
-            //if success data
+                //if success data
 
-            $('#kab_id').empty();
-            $.each(data, function(index, kabupatensObj){
-                $('#kab_id').append('<option value="' +kabupatensObj.id_kab+ '">' +kabupatensObj.nama+ '</option>');
-            });
+                $('#kab_id').empty();
+                $.each(data, function(index, kabupatensObj){
+                    $('#kab_id').append('<option value="' +kabupatensObj.id_kab+ '">' +kabupatensObj.nama+ '</option>');
+                });
 
             });
+        }
+        
+        $('#prov_id').on('change', function(e){
+            console.log(e);
+            var provId = e.target.value;
+
+            getDataKab(provId);
+        });
+    
+        $( document ).ready(function(e) {
+            console.log(e);
+            var provId = $('#prov_id').val();
+
+            getDataKab(provId);
         });
     </script>
 @endsection
