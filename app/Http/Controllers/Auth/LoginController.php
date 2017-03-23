@@ -64,6 +64,8 @@ class LoginController extends Controller
 
         $authUser = $this->findOrCreateUser($user, $provider);
         Auth::login($authUser, true);
+
+        alert()->success('Selamat datang', 'Berhasil !');
         return redirect($this->redirectTo);
     }
 

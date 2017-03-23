@@ -15,5 +15,8 @@
 
     {{-- include standart footer --}}
     @include('includes.footer')
+
+    <!-- Include this after the sweet alert js file -->
+    @include('sweet::alert')
 </body>
 </html>

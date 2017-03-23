@@ -49,7 +49,7 @@ class ProfileController extends Controller
         // get umeta data
         $umeta = $this->getUserProfile($user->id);
 
-    
+
         return view('contents.pengaturan', compact('user', 'prov_lists', 'umeta'));        
         
     }
@@ -137,7 +137,7 @@ class ProfileController extends Controller
                 }
             }
 
-
+            alert()->success('Berhasil menyimpan profil', 'Selamat');
             return redirect()->route('settings');
         }
         
