@@ -30,7 +30,7 @@
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
                     <li>
-                        <button type="button" class="btn btn-default navbar-btn"> <span class="glyphicon glyphicon-plus-sign"></span> Iklan</button>
+                        <button type="button" class="btn btn-default navbar-btn"> <i class="fa fa-plus-circle"></i> Iklan</button>
                     </li>
                     
                     <li class="dropdown">
@@ -41,16 +41,16 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href=""> <span class="glyphicon glyphicon-user"></span> Profil</a> 
+                                <a href=""> <i class="fa fa-user"></i> Profil</a> 
                             </li>
                             <li>
-                                <a href="{{ route('settings')}}"> <span class="glyphicon glyphicon-cog"></span> Pengaturan</a> 
+                                <a href="{{ route('settings')}}"> <i class="fa fa-cog"> </i> Pengaturan</a> 
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
-                                    <span class="glyphicon glyphicon-log-out"></span>
+                                    <i class="fa fa-sign-out"></i>
                                     Logout
                                 </a>
 
