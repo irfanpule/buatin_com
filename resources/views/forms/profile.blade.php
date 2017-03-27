@@ -32,12 +32,12 @@
         
         <div class="col-md-6">
             Nama Usaha / Jasa 
-            <h3> {{ $user->display_name }} </h3>
+            <h3><i class="fa fa-pencil-square-o" data-toggle="modal" data-target="#myDisplayName"></i> {{ $user->display_name }} </h3>
         </div>
 
         <div class="col-md-6">
             Nama Pengguna
-            <h3> {{ $user->display_name }} </h3>
+            <h3><i class="fa fa-pencil-square-o" data-toggle="modal" data-target="#myName"></i> {{ $user->name }} </h3>
         </div>
 
         <div class="col-md-12">
@@ -97,4 +97,67 @@
             <button type="submit" class="btn btn-primary">Simpan</button>
         </div>
     </div>
+{!! Form::close() !!}
+
+
+<!-- Modal -->
+{!! Form::open(['route'=>'profileName']) !!}
+<div class="modal fade" id="myName" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Ubah Nama Pengguna</h4>
+      </div>
+      <div class="modal-body">
+    
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    {{ Form::label('InputName', 'Nama Pengguna')}}
+                    {{ Form::text('name', Auth::user()->name, ['class' => 'form-control', 'placeholder' => 'Nama Pengguna']) }}
+                    {{ Form::hidden('type', 'name' ) }}
+                </div>  
+            </div>
+        </div>
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
+{!! Form::close() !!}
+
+<!-- Modal -->
+{!! Form::open(['route'=>'profileName']) !!}
+<div class="modal fade" id="myDisplayName" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Ubah Nama Usaha / Jasa</h4>
+      </div>
+      <div class="modal-body">
+    
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    {{ Form::label('InputDisplayName', 'Nama Usaha / Jasa')}}
+                    {{ Form::text('display_name', Auth::user()->display_name, ['class' => 'form-control', 'placeholder' => 'Nama Usaha / Jasa']) }}
+                    {{ Form::hidden('type', 'displayName' ) }}
+                </div>  
+            </div>
+        </div>
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
 {!! Form::close() !!}

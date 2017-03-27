@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index');
 // Settings
 Route::get('user/pengaturan', 'ProfileController@view')->name('settings');
 Route::post('user/pengaturan', 'ProfileController@store')->name('profile');
+Route::post('user/profile/name', 'ProfileController@editName')->name('profileName');
 
 
 

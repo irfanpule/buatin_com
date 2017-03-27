@@ -145,4 +145,52 @@ class ProfileController extends Controller
 
 
     }
+
+
+    public function editName(Request $request) {
+        /*
+            Jika type post name maka ubah name
+                jika nama diambil dari sosmed maka tolak penggantian name
+            Jika type post displayName maka ubah display name
+        */ 
+
+        // return dd($request);  
+        if($request->type == 'name'){
+
+            if(Auth::user()->provider == 'buatin') {
+
+                // simpan
+                $user = User::findOrFail(Auth::user()->id);
+                $user->update([
+                    'name' => $request->name,
+                ]);
+
+                alert()->success('Ubah Nama Pengguna', 'Berhasil');
+                return redirect()->route('settings');
+
+
+            }
+            else{
+
+                // tolak
+                alert()->warning('Anda login menggunakan '.Auth::user()->provider, 'Gagal');
+                return redirect()->route('settings');
+            }
+
+            
+        }
+        elseif($request->type == 'displayName'){
+
+            $user = User::findOrFail(Auth::user()->id);
+            $user->update([
+                'display_name' => $request->display_name,
+            ]);
+
+            alert()->success('Ubah Nama Usaha / Jasa', 'Berhasil');
+            return redirect()->route('settings');   
+        }
+
+    }
+
+
 }
