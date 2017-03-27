@@ -68,7 +68,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'provider' => 'buatin',
             'provider_id' => bcrypt('buatin'.$data['email']),
-            'avatar' => 'default.jpg',
+            'avatar' => 'img/user-default.svg',
             'password' => bcrypt($data['password']),
         ]);
     }
