@@ -14,6 +14,10 @@ const { mix } = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
 
-mix.combine(['resources/assets/css/style.css'], 'public/css/all.css');
+mix.combine([
+    'resources/assets/css/style.css',
+    'resources/assets/font-awesome/css/font-awesome.css',
+    ], 'public/css/all.css');
 
 mix.copy('node_modules/sweetalert/dist/', 'public/sweetalert/');
+mix.copy('resources/assets/font-awesome/fonts/', 'public/fonts/');
