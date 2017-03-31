@@ -83,6 +83,7 @@ class ProfileController extends Controller
                 $store_umeta->save();
             }
 
+            alert()->success('Menyimpan Profil', 'Berhasil');
             return redirect()->route('settings');
         }
         else {
@@ -137,7 +138,7 @@ class ProfileController extends Controller
                 }
             }
 
-            alert()->success('Berhasil menyimpan profil', 'Selamat');
+            alert()->success('Menyimpan Profil', 'Berhasil');
             return redirect()->route('settings');
         }
         
