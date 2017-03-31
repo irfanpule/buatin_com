@@ -12,6 +12,7 @@
 
         <div class="col-md-4">
             <div class="form-group">
+                <img src="{{ asset(Auth::user()->avatar) }}" class="img-thumbnail avatar-200">
                 <label for="exampleInputFile">Foto Profil</label>
                 <input type="file" id="exampleInputFile">
                 <p class="help-block">Example block-level help text here.</p>
