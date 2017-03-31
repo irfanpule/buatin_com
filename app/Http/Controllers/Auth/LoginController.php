@@ -62,6 +62,7 @@ class LoginController extends Controller
     {
         $user = Socialite::driver($provider)->user();
 
+        // return dd($user);
         $authUser = $this->findOrCreateUser($user, $provider);
         Auth::login($authUser, true);
 
@@ -88,7 +89,7 @@ class LoginController extends Controller
             'email'    => $user->email,
             'provider' => $provider,
             'provider_id' => $user->id,
-            'avatar' => $user->avatar
+            'avatar' => $user->avatar_original
         ]);
     }
 }
