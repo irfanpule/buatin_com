@@ -28,6 +28,9 @@ Route::post('user/profile/photo', 'ProfileController@getPhoto')->name('getPhotoP
 Route::post('user/profile/photo/crop', 'ProfileController@cropPhoto')->name('cropPhotoProfile');
 
 
+// Portfolio
+Route::get('add/portfolio', 'PortfolioController@view')->name('addPortfolio');
+
 
 
 

@@ -30,7 +30,7 @@
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
                     <li>
-                        <button type="button" class="btn btn-default navbar-btn"> <i class="fa fa-plus-circle"></i> Iklan</button>
+                        <a href="{{ route('addPortfolio')}}" class="btn btn-default navbar-btn"> <i class="fa fa-plus-circle"></i> Portofolio</a>
                     </li>
                     
                     <li class="dropdown">
