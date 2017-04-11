@@ -18,6 +18,7 @@
 
                     {!! Form::open(['route' => 'cropPhotoProfile']) !!}
                     {!! Form::hidden('image', $photo_url) !!}
+                    {!! Form::hidden('file_name', $file_name) !!}
                     {!! Form::hidden('x', '', ['id' => 'x'] ) !!}
                     {!! Form::hidden('y', '', ['id' => 'y'] ) !!}
                     {!! Form::hidden('w', '', ['id' => 'w'] ) !!}
