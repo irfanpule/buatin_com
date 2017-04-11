@@ -10,14 +10,18 @@
 
     <div class="row" style="margin-top:30px;">
 
+        {!! Form::open(['route'=>'getPhotoProfile', 'files' => true]) !!}
         <div class="col-md-4">
             <div class="form-group">
                 <img src="{{ asset(Auth::user()->avatar) }}" class="img-thumbnail avatar-200">
                 <label for="exampleInputFile">Foto Profil</label>
-                <input type="file" id="exampleInputFile">
-                <p class="help-block">Example block-level help text here.</p>
+                <input type="file" name="image" id="exampleInputFile">
+            </div>
+            <div class="form-group">
+                {!! Form::submit('upload', ['class' => 'btn btn-primary']) !!}
             </div>
         </div>
+        {!! Form::close() !!}
         
         <div class="col-md-6">
             <div class="form-group">

@@ -194,4 +194,69 @@ class ProfileController extends Controller
     }
 
 
+    /*
+        get photo file to crop
+    */ 
+    public function getPhoto(Request $request)
+    {
+
+        $this->validate($request, [
+            'image' => 'required|mimes:jpeg,jpg|max:10000'
+        ]);
+
+
+        $file = $request->image;
+        $file_name = $file->getClientOriginalName();
+        $dest = 'images/'.Auth::user()->id;
+
+        if ($file->move($dest, $file_name))
+        {
+            $photo_url = $dest."/".$file_name;
+            return view('contents.crop-photo-profile', compact('photo_url'));
+        }
+        else
+        {
+            return "Error uploading file";
+        }
+        
+
+    }
+
+
+    public function cropPhoto(Request $request)
+    {   
+        //date and time
+        $date = date("Y-m-d");
+        $time = date("h-i-sa");
+
+        // set width and hight after crop (200px)
+        $targ_h = $targ_w = 200 ;
+        $quality = 90;
+
+
+        //copy original image to crop
+        $src  = $request->image;
+        $src2 = 'images/'.Auth::user()->id.'/crop'.Auth::user()->name.$date.$time.'.jpg';
+        $copy = copy($src, $src2);
+
+
+        $img  = imagecreatefromjpeg($src2);
+        $dest = ImageCreateTrueColor($targ_w,$targ_h);
+
+        imagecopyresampled($dest, $img, 0, 0, $request->x,
+            $request->y, $targ_w, $targ_h,
+            $request->w, $request->h);
+        imagejpeg($dest, $src2, $quality);
+
+        // save photo profile
+        $user = User::find(Auth::user()->id);
+        $user->update([
+            'avatar' => $src2,
+        ]);
+
+        alert()->success('Ubah Foto Profil', 'Berhasil');
+        return redirect()->route('settings');
+
+    }
+
 }

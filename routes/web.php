@@ -24,6 +24,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('user/pengaturan', 'ProfileController@view')->name('settings');
 Route::post('user/pengaturan', 'ProfileController@store')->name('profile');
 Route::post('user/profile/name', 'ProfileController@editName')->name('profileName');
+Route::post('user/profile/photo', 'ProfileController@getPhoto')->name('getPhotoProfile');
+Route::post('user/profile/photo/crop', 'ProfileController@cropPhoto')->name('cropPhotoProfile');
 
 
 
