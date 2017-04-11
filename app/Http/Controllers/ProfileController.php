@@ -9,6 +9,7 @@ use App\Dprovinsi;
 use App\Umeta;
 use App\Http\Requests\ProfileRequest;
 use Auth;
+use Storage;
 
 class ProfileController extends Controller
 {
@@ -207,12 +208,15 @@ class ProfileController extends Controller
 
         $file = $request->image;
         $file_name = $file->getClientOriginalName();
-        $dest = 'images/'.Auth::user()->id;
+        $dest = 'images/'.Auth::user()->id.'/';
 
-        if ($file->move($dest, $file_name))
+
+        // if ($file->move($dest, $file_name))
+        if ( Storage::disk('public')->put($dest.$file_name, file_get_contents($file)) )
         {
-            $photo_url = $dest."/".$file_name;
-            return view('contents.crop-photo-profile', compact('photo_url'));
+            // $photo_url = $dest."/".$file_name;
+            $photo_url = Storage::url($dest.$file_name);
+            return view('contents.crop-photo-profile', compact('photo_url', 'file_name'));
         }
         else
         {
@@ -234,13 +238,26 @@ class ProfileController extends Controller
         $quality = 90;
 
 
-        //copy original image to crop
+        /*
+            before crop image, duplicate image then rename, after then
+            crop image
+        */
+        $dest = 'images/'.Auth::user()->id.'/';
+
+        $file_name = $request->file_name;
         $src  = $request->image;
-        $src2 = 'images/'.Auth::user()->id.'/crop'.Auth::user()->name.$date.$time.'.jpg';
-        $copy = copy($src, $src2);
+
+        $file_name2 = 'crop'.Auth::user()->name.$date.$time.'.jpg';
+        $src2 = $dest.$file_name2;
+
+        //copy original image to crop
+        $copy = Storage::disk('public')->copy($dest.$file_name, $src2);
 
 
-        $img  = imagecreatefromjpeg($src2);
+        /*
+            storage/ to read file from shortcut public folder
+        */
+        $img  = imagecreatefromjpeg('storage/'.$src2);
         $dest = ImageCreateTrueColor($targ_w,$targ_h);
 
         imagecopyresampled($dest, $img, 0, 0, $request->x,
