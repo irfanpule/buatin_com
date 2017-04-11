@@ -208,7 +208,7 @@ class ProfileController extends Controller
 
         $file = $request->image;
         $file_name = $file->getClientOriginalName();
-        $dest = 'images/'.Auth::user()->id.'/';
+        $dest = 'images/'.Auth::user()->id.'/'.'pp/';
 
 
         // if ($file->move($dest, $file_name))
@@ -242,7 +242,7 @@ class ProfileController extends Controller
             before crop image, duplicate image then rename, after then
             crop image
         */
-        $dest = 'images/'.Auth::user()->id.'/';
+        $dest = 'images/'.Auth::user()->id.'/'.'pp/';
 
         $file_name = $request->file_name;
         $src  = $request->image;

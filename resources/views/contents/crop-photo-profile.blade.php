@@ -23,7 +23,9 @@
                     {!! Form::hidden('y', '', ['id' => 'y'] ) !!}
                     {!! Form::hidden('w', '', ['id' => 'w'] ) !!}
                     {!! Form::hidden('h', '', ['id' => 'h'] ) !!}
-                    {!! Form::submit('Crop it!', ['class' => 'btn btn-primary']) !!}
+                    {!! Form::submit('Potong', ['class' => 'btn btn-primary']) !!}
+                    
+                    <a href="{{ route('settings') }}" class="btn btn-danger">Batal</a>
                     {!! Form::close() !!}
                 </div>
             </div>
