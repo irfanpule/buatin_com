@@ -263,12 +263,12 @@ class ProfileController extends Controller
         imagecopyresampled($dest, $img, 0, 0, $request->x,
             $request->y, $targ_w, $targ_h,
             $request->w, $request->h);
-        imagejpeg($dest, $src2, $quality);
+        imagejpeg($dest, 'storage/'.$src2, $quality);
 
         // save photo profile
         $user = User::find(Auth::user()->id);
         $user->update([
-            'avatar' => $src2,
+            'avatar' => 'storage/'.$src2,
         ]);
 
         alert()->success('Ubah Foto Profil', 'Berhasil');
