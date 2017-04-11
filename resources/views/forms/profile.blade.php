@@ -14,11 +14,11 @@
         <div class="col-md-4">
             <div class="form-group">
                 <img src="{{ asset(Auth::user()->avatar) }}" class="img-thumbnail avatar-200">
-                <label for="exampleInputFile">Foto Profil</label>
-                <input type="file" name="image" id="exampleInputFile">
+                <input type="file" name="image" id="InputImage" style="display:none;">
             </div>
             <div class="form-group">
-                {!! Form::submit('upload', ['class' => 'btn btn-primary']) !!}
+                <span id="chooseBtn" class="btn btn-default"><i class="fa fa-camera"> </i> Ganti Foto Profil</span>
+                <button name="submit" id="uploadBtn" style="display:none;">upload</button>
             </div>
         </div>
         {!! Form::close() !!}

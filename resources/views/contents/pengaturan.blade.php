@@ -60,7 +60,7 @@
 
 {{-- add js on footer --}}
 @section('js-footer')
-    {{--  --}}
+    {{-- Combo Chain --}}
     <script>
 
         function getDataKab(provId){
@@ -89,6 +89,21 @@
             var provId = $('#prov_id').val();
 
             getDataKab(provId);
+        });
+    </script>
+
+    {{-- upload photo --}}
+    <script>
+        $('#chooseBtn').click(function(e){ 
+            console.log(e);
+
+            $('#InputImage').click();
+        });
+        
+        $('#InputImage').on('change', function(e){ 
+            console.log(e);
+
+            $('#uploadBtn').click();
         });
     </script>
 @endsection
