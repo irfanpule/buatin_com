@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Portofolio')
+@section('css')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css" rel="stylesheet">
+@endsection
 
 @section('content')
 <div class="container">
@@ -17,4 +20,37 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js-footer')
+    {{-- multi upload image post --}}
+    <script>
+        $('.img-portfolio').mouseover(function(){
+            $(this).css('background-color', '#50abde');
+        });
+        $('.img-portfolio').mouseout(function(){
+            $(this).css('background-color', '#3097d1');
+        });
+
+        $('.img-portfolio').click(function(){
+            id = $(this).attr('id');
+            no_data = $(this).attr('no-data');
+            console.log(no_data, id);
+
+            $('#chooseFile'+no_data).click();
+
+            $('#chooseFile'+no_data).on('change', function(){
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#imgUpload"+no_data).css('background-size', 'cover');
+                    $("#imgUpload"+no_data+" i").css('opacity', 0.5);
+                    $("#imgTumbh"+no_data).css('display', 'block');
+
+                    document.getElementById('imgUpload'+no_data).style.backgroundImage = "url(" + reader.result + ")";
+                }
+                reader.readAsDataURL($(this)[0].files[0]);
+            });
+        });
+        
+    </script>
 @endsection

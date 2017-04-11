@@ -6,3 +6,14 @@
 	width: 200px;
 }
 
+.img-portfolio{
+	width: 95px;
+	height: 95px;
+	background-color: #3097d1;
+	text-align: center;
+	color: white;
+	float: left;
+	padding: 20px;
+	border: 2px rgb(61.2%, 61.2%, 61.2%) solid;
+	border-radius: 8px;
+}
