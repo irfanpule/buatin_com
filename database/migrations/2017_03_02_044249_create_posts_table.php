@@ -18,6 +18,8 @@ class CreatePostsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('post_title');
             $table->text('post_content');
+            $table->double('price_start');
+            $table->double('price_end');
             $table->text('post_status');
             $table->timestamps();
 
