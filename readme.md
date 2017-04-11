@@ -1,4 +1,4 @@
-<p align="center"><img src="https://lh4.googleusercontent.com/-kEeaEN82IYU/AAAAAAAAAAI/AAAAAAAAACU/njFQdIBrWrE/photo.jpg"></p>
+<p align="center"><img src="https://lh4.googleusercontent.com/-kEeaEN82IYU/AAAAAAAAAAI/AAAAAAAAACU/njFQdIBrWrE/photo.jpg" style="width:150px;"></p>
 
 ## About Buatin
 
