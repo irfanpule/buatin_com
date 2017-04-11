@@ -12,5 +12,10 @@ class PortfolioController extends Controller
         return view('contents.add-portfolio');
     }
 
+    public function store(Request $request)
+    {
+        return dd($request->all(), $request->file());
+    }
+
 
 }

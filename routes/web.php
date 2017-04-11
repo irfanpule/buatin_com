@@ -30,6 +30,7 @@ Route::post('user/profile/photo/crop', 'ProfileController@cropPhoto')->name('cro
 
 // Portfolio
 Route::get('add/portfolio', 'PortfolioController@view')->name('addPortfolio');
+Route::post('add/portfolio', 'PortfolioController@store')->name('postPortfolio');
 
 
 
