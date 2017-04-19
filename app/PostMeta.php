@@ -11,4 +11,11 @@ class PostMeta extends Model
     protected $fillable = [
         'meta_value', 'meta_key', 'post_id'
     ];
+
+    // relation to Post
+    public function post()
+    {
+        return $this->belongsTo('App\Post','post_id');
+    }
+
 }

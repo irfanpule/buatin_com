@@ -26,4 +26,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // relation one to many to post
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
+
+    // relation to umeta
+    public function umetas()
+    {
+        return $this->hasMany('App\Umeta');
+    }
+
+    // relation to All Image
+    public function allimages()
+    {
+        return $this->hasMany('App\Allimage');
+    }
 }

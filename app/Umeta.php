@@ -12,4 +12,10 @@ class Umeta extends Model
         'meta_value', 'meta_key', 'user_id'
     ];
 
+    // relation to user
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
+
 }
