@@ -2,10 +2,15 @@
 
 namespace App;
 
+use Laravel\Scout\Searchable;   
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    // scout
+    use Searchable;
+
+
     protected $table = 'posts';
 
     protected $fillable = [
@@ -29,4 +34,5 @@ class Post extends Model
     {
         return $this->hasMany('App\Allimage');
     }
+
 }
