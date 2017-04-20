@@ -33,7 +33,7 @@
                         <a href="{{ route('addPortfolio')}}" class="btn btn-default navbar-btn"> <i class="fa fa-plus-circle"></i> Portofolio</a>
                     </li>
                     
-                    <li class="dropdown">
+                    <li class="dropdown" style="margin-top:6px;">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <img src="{{ asset(Auth::user()->avatar) }}" class="img-circle avatar-25">
                             {{ Auth::user()->name }} <span class="caret"></span>
@@ -41,7 +41,7 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href=""> <i class="fa fa-user"></i> Profil</a> 
+                                <a href="{{ route('home') }}"> <i class="fa fa-user"></i> Profil</a> 
                             </li>
                             <li>
                                 <a href="{{ route('settings')}}"> <i class="fa fa-cog"> </i> Pengaturan</a> 
