@@ -24,7 +24,7 @@ class PortfolioController extends Controller
 
     public function store(PortfolioRequest $request)
     {   
-
+    
         /*
             save post data
         */
@@ -66,12 +66,12 @@ class PortfolioController extends Controller
                         'user_id' => Auth::user()->id,
                         'post_id' => $post->id,
                         'image_path' => $photo_url,
-                        'description' => $request->default_image,
+                        'description' => null,
                     ]);
                     $store_images->save();                
 
                     // default image
-                    if($request->default_image == $j++){
+                    if($request->default_image == $key){
                         $default_image = Storage::url($dest.$file_name);
                     }
 
