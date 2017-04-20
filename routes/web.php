@@ -20,17 +20,23 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 
-// Settings
-Route::get('user/settings', 'ProfileController@view')->name('settings');
-Route::post('user/settings', 'ProfileController@store')->name('profile');
-Route::post('user/profile/name', 'ProfileController@editName')->name('profileName');
-Route::post('user/profile/photo', 'ProfileController@getPhoto')->name('getPhotoProfile');
-Route::post('user/profile/photo/crop', 'ProfileController@cropPhoto')->name('cropPhotoProfile');
+Route::group(['middleware' => 'auth'], function () {
+    
+    // Settings
+    Route::get('user/settings', 'ProfileController@view')->name('settings');
+    Route::post('user/settings', 'ProfileController@store')->name('profile');
+    Route::post('user/profile/name', 'ProfileController@editName')->name('profileName');
+    Route::post('user/profile/photo', 'ProfileController@getPhoto')->name('getPhotoProfile');
+    Route::post('user/profile/photo/crop', 'ProfileController@cropPhoto')->name('cropPhotoProfile');
 
 
-// Portfolio
-Route::get('add/portfolio', 'PortfolioController@view')->name('addPortfolio');
-Route::post('add/portfolio', 'PortfolioController@store')->name('postPortfolio');
+    // Portfolio
+    Route::get('add/portfolio', 'PortfolioController@view')->name('addPortfolio');
+    Route::post('add/portfolio', 'PortfolioController@store')->name('postPortfolio');
+
+});
+
+
 
 
 
