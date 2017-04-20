@@ -19,7 +19,11 @@
             </div>
             <div class="form-group">
                 {{ Form::label('InputCategory', 'Kategori')}}
-                {{ Form::select('post_category', ['A','B','C'] , null, ['class' => 'form-control', 'placeholder' => 'pilih Kategori']) }}
+                {{ Form::select('post_category', $category  , null, ['class' => 'form-control', 'placeholder' => 'pilih Kategori']) }}
+            </div>
+            <div class="form-group">
+                {{ Form::label('InputNameTags', 'Tags')}}
+                {{ Form::text('post_tags',null, ['class' => 'form-control', 'placeholder' => 'Tags']) }}
             </div>
             <hr>
 
@@ -58,7 +62,7 @@
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-addon">Rp.</div>
-                    {{ Form::text('price_start',null, ['class' => 'form-control', 'id'=>'PriceStart', 'placeholder' => '100.000']) }}
+                    {{ Form::text('price_start',null, ['class' => 'form-control input-rupiah', 'id'=>'PriceStart', 'placeholder' => '100.000']) }}
                 </div>
             </div>
         </div>
@@ -67,15 +71,15 @@
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-addon">Rp.</div>
-                    {{ Form::text('price_end',null, ['class' => 'form-control', 'id'=>'PriceEnd', 'placeholder' => '500.000']) }}
+                    {{ Form::text('price_end',null, ['class' => 'form-control input-rupiah', 'id'=>'PriceEnd', 'placeholder' => '500.000']) }}
                 </div>
             </div>
         </div>
 
         
         <div class="col-md-12">
-        <p class="input-rupiah"></p>
-        <hr>
+
+           <hr>
             <button type="submit" class="btn btn-primary">Simpan</button>
         </div>
     </div>

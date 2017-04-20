@@ -76,12 +76,6 @@
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
             return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
         }
-
-        $('#PriceStart').keyup(function() {
-            var value = $( this ).val();
-            $( "p" ).text( value );
-        }).keyup();
-
   
     </script>
 @endsection
