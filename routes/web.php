@@ -16,14 +16,11 @@ Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@home')->name('home');
 
 
 Route::group(['middleware' => 'auth'], function () {
