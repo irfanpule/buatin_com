@@ -11,9 +11,15 @@
 |
 */
 
+// OAuth Routes
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 Auth::routes();
 
@@ -21,19 +27,26 @@ Route::get('/home', 'HomeController@index');
 
 
 Route::group(['middleware' => 'auth'], function () {
+
+    // route group user
+    Route::group(['prefix' => 'user'], function () {
+        // Settings
+        Route::get('settings', 'ProfileController@view')->name('settings');
+        Route::post('settings', 'ProfileController@store')->name('profile');
+        Route::post('profile/name', 'ProfileController@editName')->name('profileName');
+        Route::post('profile/photo', 'ProfileController@getPhoto')->name('getPhotoProfile');
+        Route::post('profile/photo/crop', 'ProfileController@cropPhoto')->name('cropPhotoProfile');
     
-    // Settings
-    Route::get('user/settings', 'ProfileController@view')->name('settings');
-    Route::post('user/settings', 'ProfileController@store')->name('profile');
-    Route::post('user/profile/name', 'ProfileController@editName')->name('profileName');
-    Route::post('user/profile/photo', 'ProfileController@getPhoto')->name('getPhotoProfile');
-    Route::post('user/profile/photo/crop', 'ProfileController@cropPhoto')->name('cropPhotoProfile');
+    });
 
 
     // Portfolio
     Route::get('add/portfolio', 'PortfolioController@view')->name('addPortfolio');
     Route::post('add/portfolio', 'PortfolioController@store')->name('postPortfolio');
 
+
+    // Ajax
+    Route::get('ajax-kab/{provId}', 'ComboChainController@ProvId');
 });
 
 
@@ -41,9 +54,4 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-// OAuth Routes
-Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
-Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
-// Ajax
-Route::get('ajax-kab/{provId}', 'ComboChainController@ProvId');
