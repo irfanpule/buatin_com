@@ -44,7 +44,7 @@
 
                 <label id="imgTumbh{{$i}}" style="display:none;">
                     Default
-                    <input type="radio" name="default_image" value="{{$i}}">
+                    <input type="radio" name="default_image" value="image{{$i}}">
                 </label>    
             </div>
         @endfor
