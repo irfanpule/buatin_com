@@ -19,9 +19,6 @@ Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallb
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
-
-
 Route::group(['middleware' => 'auth'], function () {
     
     Route::get('/home', 'HomeController@home')->name('home');
@@ -47,6 +44,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('ajax-kab/{provId}', 'ComboChainController@ProvId');
 });
 
+Route::get('/', 'HomeController@index');
+Route::get('/{id}/{slug}', 'HomeController@singlePost')->name('singlePost');
 
 
 

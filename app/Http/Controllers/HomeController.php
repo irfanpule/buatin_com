@@ -20,7 +20,7 @@ class HomeController extends Controller
             show all post pagination 10
         */
         
-        $posts = Post::with('user', 'post_metas')->orderBy('created_at', 'desc')->paginate(9); 
+        $posts = Post::with('user.umetas', 'post_metas')->orderBy('created_at', 'desc')->paginate(9); 
         return view('welcome', compact('posts'));
     }
 
@@ -30,7 +30,19 @@ class HomeController extends Controller
             show all post pagination 10
         */
         
-        $posts = Post::paginate(10); 
+        $posts = Post::with('user', 'post_metas')->orderBy('created_at', 'desc')->paginate(9); 
         return view('home', compact('posts'));
+    }
+
+
+    public function singlePost($id, $slug)
+    {   
+        /*
+            show single post
+        */
+
+        $post = Post::find($id);
+
+        return view('contents.single-post', compact('post'));
     }
 }

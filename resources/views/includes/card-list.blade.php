@@ -12,7 +12,7 @@
 
                 
                 <div class="panel-heading">
-                    <h4><a href="#">{{ $post->post_title }}</a></h4>
+                    <h4><a href="{{ route('singlePost', ['id' => $post->id, 'slug' => str_slug($post->post_title)]) }}">{{ $post->post_title }}</a></h4>
                 </div>
 
                 <div class="panel-body">
@@ -20,7 +20,12 @@
                     <div class="caption">
                         <h4>Rp. <span class="rupiah">{{ $post->price_start }}</span> - <span class="rupiah">{{ $post->price_end }}</span> </h4>   
                     </div>
-                    
+
+                    <span class="pull-right">
+                        @foreach($post->user->umetas->where('meta_key', 'kab-kota') as $umeta) 
+                            {{ $umeta->meta_value}}
+                        @endforeach
+                    </span>
                     <span>{{ $post->user->display_name }} </span>
                 </div>
 
