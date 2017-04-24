@@ -18,4 +18,12 @@ class Umeta extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
 
+    // relation to DKabKota
+    public function kab_kota()
+    {
+        return $this->hasOne('App\DKabKota', 'id_kab', 'meta_value');
+    }
+
+
+
 }
