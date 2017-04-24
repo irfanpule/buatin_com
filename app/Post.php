@@ -35,4 +35,19 @@ class Post extends Model
         return $this->hasMany('App\Allimage');
     }
 
+
+
+    /*
+     * algolia search array
+     * this for index relation model
+     */
+    public function toSearchableArray()
+    {
+
+        $data = $this->toArray();
+        $data['user'] = $this->user->toArray();
+        $data['post_metas'] = $this->post_metas->toArray();
+
+        return $data;
+    }
 }
