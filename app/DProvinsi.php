@@ -10,5 +10,10 @@ class DProvinsi extends Model
     protected $table = 'provinsi';
     protected $primaryKey = 'id_prov';
 
+    // relation to Kabupaten
+    public function kabupatens()
+    {
+        return $this->hasMany('App\DKabKota');
+    }
 
 }
