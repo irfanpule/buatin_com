@@ -20,7 +20,7 @@ class HomeController extends Controller
             show all post pagination 10
         */
         
-        $posts = Post::with('user.umetas', 'post_metas')->orderBy('created_at', 'desc')->paginate(9); 
+        $posts = Post::with('user.umetas.kab_kota', 'post_metas')->orderBy('created_at', 'desc')->paginate(9); 
         return view('welcome', compact('posts'));
     }
 
