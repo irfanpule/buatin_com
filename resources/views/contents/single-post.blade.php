@@ -40,10 +40,8 @@
 
                 <div class="panel-body">
                     @foreach($post->user->umetas as $umeta)
-                        @if( $umeta->meta_key == 'provinsi')
-                            <p><i class="fa fa-map-marker fa-lg icon-padding"></i> {{ $umeta->meta_value }} 
-                        @elseif($umeta->meta_key == 'kab-kota')
-                                {{ $umeta->meta_value }} </p>
+                        @if($umeta->meta_key == 'kab-kota')
+                            <p><i class="fa fa-map-marker fa-lg icon-padding"></i> {{ $umeta->kab_kota->provinsi->nama }}, {{ $umeta->kab_kota->nama }}  </p>
                         @elseif($umeta->meta_key == 'address')
                             <p><i class="fa"></i> {{ $umeta->meta_value }} </p>
                             <hr>
