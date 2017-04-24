@@ -23,7 +23,7 @@
 
                     <span class="pull-right">
                         @foreach($post->user->umetas->where('meta_key', 'kab-kota') as $umeta) 
-                            {{ $umeta->meta_value}}
+                           <i class="fa fa-map-marker"></i> {{ $umeta->kab_kota->nama }}
                         @endforeach
                     </span>
                     <span>{{ $post->user->display_name }} </span>
