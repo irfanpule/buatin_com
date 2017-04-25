@@ -33,6 +33,16 @@
 	padding-right: 20px; 
 }
 
+.meta-title {
+	float: left;
+	width: 100%;
+	font-size: 12px;
+}
+
+.price {
+	padding-bottom: 15px;
+}
+
 
 /* style laravel*/
 html, body {

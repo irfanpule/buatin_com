@@ -20,7 +20,7 @@ class HomeController extends Controller
             show all post pagination 10
         */
         
-        $posts = Post::with('user.umetas.kab_kota', 'post_metas')->orderBy('created_at', 'desc')->paginate(9); 
+        $posts = Post::with('user.umetas.kab_kota', 'post_metas')->orderBy('created_at', 'desc')->paginate(8); 
         return view('welcome', compact('posts'));
     }
 
@@ -30,7 +30,8 @@ class HomeController extends Controller
             show all post pagination 10
         */
         
-        $posts = Post::with('user', 'post_metas')->orderBy('created_at', 'desc')->paginate(9); 
+        $id = Auth::user()->id;
+        $posts = Post::with('user.umetas.kab_kota', 'post_metas')->where('user_id', $id)->orderBy('created_at', 'desc')->paginate(8); 
         return view('home', compact('posts'));
     }
 

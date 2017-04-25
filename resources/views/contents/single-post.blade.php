@@ -7,7 +7,7 @@
         <div class="col-md-7 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4>{{ title_case($post->post_title) }}</h3>
+                    <h3>{{ title_case($post->post_title) }}</h3>
                     <h4>Rp. <span class="rupiah">{{ $post->price_start }}</span> - <span class="rupiah">{{ $post->price_end }}</span> </h4>
                 </div>
 
@@ -33,7 +33,7 @@
                             <img src="{{ asset($post->user->avatar) }}" class="img-circle avatar-50">
                         </div>
                         <div class="col-xs-6">
-                            <h4>{{ title_case($post->user->display_name) }}</h3>
+                            <h4>{{ title_case($post->user->display_name) }}</h4>
                         </div>
                     </div>
                 </div>
