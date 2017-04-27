@@ -46,6 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/', 'HomeController@index');
 Route::get('/{id}/{slug}', 'HomeController@singlePost')->name('singlePost');
+Route::get('/search', 'HomeController@search')->name('search');
 
 
 

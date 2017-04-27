@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Umeta;
 use Auth;
 
 class HomeController extends Controller
@@ -45,5 +46,35 @@ class HomeController extends Controller
         $post = Post::find($id);
 
         return view('contents.single-post', compact('post'));
+    }
+
+    public function search(Request $request)
+    {   
+        // manual search without engine
+        $location = $request->get('location');
+        $keyword = $request->get('key');
+
+        $umeta = Umeta::where('meta_key', 'kab-kota')->where('meta_value', $location)->get();
+
+        foreach ($umeta as $key => $value) {
+            $id_meta[] = $value->user_id;
+        }
+
+        
+        $p = Post::whereHas('umetas', function($query) use ($location){
+                        $query->where('meta_value', $location);
+                    })
+                    ->where('post_title', 'like', '%'.$keyword.'%')
+                    ->where('post_content', 'like', '%'.$keyword.'%')
+                    ->orWhereHas('post_metas', function($query) use ($keyword){
+                        $query->where('meta_value', 'like', '%'.$keyword.'%');
+                    })
+                    ->get();
+
+
+        foreach ($p as $key => $value) {
+            $q[] = $value->post_title;
+        }
+        return dd($id_meta, $p, $q, '%'.$location.'%');
     }
 }
