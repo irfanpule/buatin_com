@@ -18,6 +18,12 @@ class Umeta extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
 
+    // relation to post
+    public function post()
+    {
+        return $this->belongsToMany('App\User', 'user_id', 'user_id');
+    }
+
     // relation to DKabKota
     public function kab_kota()
     {

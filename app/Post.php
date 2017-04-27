@@ -23,6 +23,12 @@ class Post extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
 
+    // relation to user meta
+    public function umetas()
+    {
+        return $this->hasMany('App\Umeta', 'user_id', 'user_id');
+    }
+
     // relation to Post Meta
     public function post_metas()
     {
@@ -46,6 +52,7 @@ class Post extends Model
 
         $data = $this->toArray();
         $data['user'] = $this->user->toArray();
+        $data['user_metas'] = $this->umetas->toArray();
         $data['post_metas'] = $this->post_metas->toArray();
 
         return $data;
