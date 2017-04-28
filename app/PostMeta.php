@@ -18,4 +18,9 @@ class PostMeta extends Model
         return $this->belongsTo('App\Post','post_id');
     }
 
+    public function category()
+    {
+        return $this->hasOne('App\Categories', 'id','meta_value');
+    }
+
 }
