@@ -17,8 +17,12 @@
 
                 <div class="panel-body">
                     <div class="meta-title">
+                        @foreach($post->post_metas->where('meta_key', 'post_category') as $meta)
+                            {{ $meta->meta_value }}
+                        @endforeach
+                        
                         @foreach($post->user->umetas->where('meta_key', 'kab-kota') as $umeta) 
-                           <i class="fa fa-map-marker"></i> {{ title_case($umeta->kab_kota->nama) }}
+                           <i class="fa fa-map-marker"></i> {{ title_case($umeta->kab_kota->nama) }}-{{ title_case($umeta->kab_kota->provinsi->nama) }}
                         @endforeach
                     </div>
 
