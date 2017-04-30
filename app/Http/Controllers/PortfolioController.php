@@ -11,15 +11,16 @@ use Storage;
 use App\Allimage;
 use App\Post;
 use App\PostMeta;
+use App\Categories;
 
 class PortfolioController extends Controller
 {
 
     public function view()
     {
-        $category = ['1' => 'Desain','2' => 'Furniture', '3' => 'Fashion'];
+        $categories = Categories::all()->pluck('category', 'id');          
 
-        return view('contents.add-portfolio', compact('category'));
+        return view('contents.add-portfolio', compact('categories'));
     }
 
     public function store(PortfolioRequest $request)

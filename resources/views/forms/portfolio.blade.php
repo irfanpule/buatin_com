@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
                 {{ Form::label('InputCategory', 'Kategori')}}
-                {{ Form::select('post_category', $category  , null, ['class' => 'form-control', 'placeholder' => 'pilih Kategori']) }}
+                {{ Form::select('post_category', $categories  , null, ['class' => 'form-control', 'placeholder' => 'pilih Kategori']) }}
             </div>
             <div class="form-group">
                 {{ Form::label('InputNameTags', 'Tags')}}

@@ -25,7 +25,7 @@
                     <h3 class="title-style">Anda ingin dibuatkan apa ?</h3>
                     <form class="form-inline">
                         <div class="form-group">
-                            {{ Form::select('category', ['pilih']  , null, ['class' => 'form-control input-lg', 'placeholder' => 'pilih Kategori']) }}
+                            {{ Form::select('category', $categories  , null, ['class' => 'form-control input-lg', 'placeholder' => 'Pilih Kategori']) }}
                         </div>
                         <div class="form-group">
                             {{ Form::text('key',null, ['class' => 'form-control input-lg', 'placeholder' => 'Cari']) }}
