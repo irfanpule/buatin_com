@@ -29,12 +29,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-xs-4">
-                            <img src="{{ asset($post->user->avatar) }}" class="img-circle avatar-50">
-                        </div>
-                        <div class="col-xs-6">
-                            <h4>{{ title_case($post->user->display_name) }}</h4>
-                        </div>
+                        <a href="{{route('userHome', ['id' => $post->user->id, 'slug' => str_slug($post->user->display_name)])}}">
+                            <div class="col-xs-4">
+                                <img src="{{ asset($post->user->avatar) }}" class="img-circle avatar-50">
+                            </div>
+                            <div class="col-xs-6">
+                                <h4>{{ title_case($post->user->display_name) }}</h4>
+                            </div>
+                        </a>
                     </div>
                 </div>
 

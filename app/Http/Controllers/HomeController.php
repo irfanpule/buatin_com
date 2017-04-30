@@ -22,21 +22,31 @@ class HomeController extends Controller
         */
         $img = ' ';
 
-        $posts = Post::with('user.umetas.kab_kota.provinsi', 'post_metas')->orderBy('created_at', 'desc')->paginate(8); 
+        $posts = Post::with('user.umetas.kab_kota.provinsi', 'post_metas.category')->orderBy('created_at', 'desc')->paginate(8); 
         return view('welcome', compact('posts','img'));
     }
 
-    public function home()
+    public function home(Request $request, $id, $slug)
     {
         /*
             show all post pagination 8
         */
         $img = ' ';
+        
+        /*
+            to home to user Home
+        */ 
+        if ($request->id && $request->slug){
+            $id = $request->id;
+        }
+        else{
+            $id = Auth::user()->id;
+        }
 
-        $id = Auth::user()->id;
-        $posts = Post::with('user.umetas.kab_kota', 'post_metas')->where('user_id', $id)->orderBy('created_at', 'desc')->paginate(8); 
+        $posts = Post::with('user.umetas.kab_kota.provinsi', 'post_metas.category')->where('user_id', $id)->orderBy('created_at', 'desc')->paginate(8); 
         return view('home', compact('posts','img'));
     }
+
 
 
     public function singlePost($id, $slug)
@@ -90,7 +100,7 @@ class HomeController extends Controller
         }
 
         //result query
-        $posts =  $search->orderBy('created_at', 'desc')->paginate(12);
+        $posts =  $search->with('user.umetas.kab_kota.provinsi', 'post_metas.category')->orderBy('created_at', 'desc')->paginate(12);
        
 
         return view('contents.search', compact('posts', 'img'));

@@ -41,10 +41,18 @@
 </div>
 
 <div class="container">
-    @include('includes.card-list')
 
-    {{ $posts->links() }}
-</div>
+    <div class="row">
+        @foreach($posts as $post)    
+            <div class="col-sm-4 col-lg-3 col-md-3">
+                @include('includes.card-list')
+            </div>
+        @endforeach
+
+        <div class="col-md-12">
+            {{ $posts->links() }}
+        </div>
+    </div>
 @endsection
 
 
