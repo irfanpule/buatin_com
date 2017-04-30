@@ -23,7 +23,10 @@
 
                 <div class="col-md-12">
                     <h3 class="title-style">Anda ingin dibuatkan apa ?</h3>
-                    <form class="form-inline">
+                    <form class="form-inline" method="GET" action="{{ route('search') }}">
+                        <div class="form-group">
+                            {{ Form::select('location', $provinsi  , null, ['class' => 'form-control input-lg', 'placeholder' => 'Pilih Location']) }}
+                        </div>
                         <div class="form-group">
                             {{ Form::select('category', $categories  , null, ['class' => 'form-control input-lg', 'placeholder' => 'Pilih Kategori']) }}
                         </div>
