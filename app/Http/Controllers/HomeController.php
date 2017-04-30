@@ -7,6 +7,7 @@ use App\Post;
 use App\Umeta;
 use Auth;
 use App\Categories;
+use App\DProvinsi;
 use Cache;
 
 class HomeController extends Controller
@@ -25,11 +26,12 @@ class HomeController extends Controller
         $img = ' ';
         $minutes = 1;
         
-        
+
         $categories = Categories::all()->pluck('category', 'id');          
+        $provinsi = DProvinsi::all()->pluck('nama', 'id_prov');          
 
         $posts = Post::with('user.umetas.kab_kota.provinsi', 'post_metas.category')->orderBy('created_at', 'desc')->paginate(8); 
-        return view('welcome', compact('posts','img', 'categories'));
+        return view('welcome', compact('posts','img', 'categories', 'provinsi'));
     }
 
     public function home()
