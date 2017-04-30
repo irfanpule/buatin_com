@@ -43,6 +43,9 @@
 	padding-bottom: 15px;
 }
 
+.panel-heading h4 {
+	font-size: 16px;
+}
 
 /* style laravel*/
 html, body {
