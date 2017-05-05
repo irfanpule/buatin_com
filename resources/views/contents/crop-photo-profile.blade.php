@@ -1,10 +1,5 @@
 @extends('layouts.app')
 @section('title', 'Crop Photo Profile')
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/jquery.Jcrop.css') }}">
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    
-@endsection
 
 @section('content')
 <div class="container">
@@ -35,8 +30,7 @@
 @endsection
 
 
-@section('js')
-    <script src="{{ asset('js/jquery.Jcrop.js') }}"></script>
+@section('js-footer')
 
     <script type="text/javascript">
         jQuery(function($){
