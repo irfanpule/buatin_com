@@ -6,7 +6,11 @@
             max-width: 100%;
             margin-right: 0px;
         }
-    </style
+        .sp-loading {
+            max-width: 100%;
+            margin-right: 0px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -18,7 +22,8 @@
                     <h3>{{ title_case($post->post_title) }}</h3>
                     <h4>Rp. <span class="rupiah">{{ $post->price_start }}</span> - <span class="rupiah">{{ $post->price_end }}</span> </h4>
                 </div>
-
+                
+                <div class="sp-loading"><img src="{{asset('img/sp-loading.gif')}}" alt=""><br>LOADING IMAGES</div>
                 <div class="sp-wrap">
                     @foreach($post->allimages->where('post_id', $post->id) as $img_post)
                         <a href="{{ asset($img_post->image_path) }}"> <img src="{{ asset($img_post->image_path) }}" style="width:100%;"></a>
@@ -26,7 +31,8 @@
                 </div>
                 
                 <div class="panel-body">
-
+                    <h4> Deskripsi </h4>
+                    <p> {{ $post->post_content }} </p>
                 </div>
 
                 
@@ -68,8 +74,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <h4> Deskripsi </h4>
-                    <p> {{ $post->post_content }} </p>
+                    
                 </div>
 
                 
