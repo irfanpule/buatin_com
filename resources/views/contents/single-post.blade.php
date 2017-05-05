@@ -1,5 +1,13 @@
 @extends('layouts.app')
 @section('title', title_case($post->post_title))
+@section('css')
+    <style>
+        .sp-wrap {
+            max-width: 100%;
+            margin-right: 0px;
+        }
+    </style
+@endsection
 
 @section('content')
 <div class="container">
@@ -11,9 +19,9 @@
                     <h4>Rp. <span class="rupiah">{{ $post->price_start }}</span> - <span class="rupiah">{{ $post->price_end }}</span> </h4>
                 </div>
 
-                <div>
+                <div class="sp-wrap">
                     @foreach($post->allimages->where('post_id', $post->id) as $img_post)
-                        <img src="{{ asset($img_post->image_path) }}" style="width:100%;">
+                        <a href="{{ asset($img_post->image_path) }}"> <img src="{{ asset($img_post->image_path) }}" style="width:100%;"></a>
                     @endforeach
                 </div>
                 
@@ -69,4 +77,13 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js-footer')
+    <script type="text/javascript">
+        /* wait for images to load */
+        $(window).on('load', function() {
+            $('.sp-wrap').smoothproducts();
+        });
+    </script>
 @endsection

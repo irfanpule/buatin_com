@@ -21,6 +21,7 @@ mix.combine([
     'resources/assets/font-awesome/css/font-awesome.css',
     'node_modules/sweetalert/dist/sweetalert.css',
     'resources/assets/css/bootstrap-tagsinput.css',
+    'resources/assets/css/smoothproducts.css',
     ], 'public/css/all.css')
     .combine([
     'node_modules/jquery/dist/jquery.js',
@@ -28,6 +29,7 @@ mix.combine([
     'resources/assets/js/jquery.Jcrop.min.js',
     'node_modules/sweetalert/dist/sweetalert.min.js',
     'resources/assets/js/bootstrap-tagsinput.js',
+    'resources/assets/js/smoothproducts.min.js',
     ], 'public/js/bundle.js');
 
 mix.copy('resources/assets/font-awesome/fonts/', 'public/fonts/');
