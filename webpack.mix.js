@@ -28,5 +28,4 @@ mix.combine([
     'node_modules/sweetalert/dist/sweetalert.min.js',
     ], 'public/js/bundle.js');
 
-mix.copy('node_modules/sweetalert/dist/', 'public/sweetalert/');
 mix.copy('resources/assets/font-awesome/fonts/', 'public/fonts/');
