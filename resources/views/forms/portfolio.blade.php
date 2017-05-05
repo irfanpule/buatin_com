@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 {{ Form::label('InputNameTags', 'Tags')}}
-                {{ Form::text('post_tags',null, ['class' => 'form-control', 'placeholder' => 'Tags']) }}
+                {{ Form::text('post_tags',null, ['class' => 'form-control', 'placeholder' => 'Pisahkan dengan koma (,)', 'data-role' => 'tagsinput']) }}
             </div>
             <hr>
 
