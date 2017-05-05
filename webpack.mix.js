@@ -19,11 +19,13 @@ mix.combine([
     'resources/assets/css/style.css',
     'resources/assets/css/jquery.Jcrop.min.css',
     'resources/assets/font-awesome/css/font-awesome.css',
+    'node_modules/sweetalert/dist/sweetalert.css',
     ], 'public/css/all.css')
     .combine([
     'node_modules/jquery/dist/jquery.js',
     'resources/assets/js/all.js',
     'resources/assets/js/jquery.Jcrop.min.js',
+    'node_modules/sweetalert/dist/sweetalert.min.js',
     ], 'public/js/bundle.js');
 
 mix.copy('node_modules/sweetalert/dist/', 'public/sweetalert/');
