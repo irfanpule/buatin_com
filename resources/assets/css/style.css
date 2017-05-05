@@ -109,3 +109,6 @@ html, body {
 .m-b-md {
 	margin-bottom: 50px;
 }
+.panel-body p{
+	white-space:pre-wrap;
+}
