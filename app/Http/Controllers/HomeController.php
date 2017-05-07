@@ -13,11 +13,39 @@ use Cache;
 class HomeController extends Controller
 {
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function nextPrevious($id, $nextOrPre)
+    {
+        if($nextOrPre == 'next'){
+
+            $query = Post::where('id', '>', $id)->get();
+            $data_id = $query->min('id');
+
+        }
+        elseif($nextOrPre == 'previous'){
+
+            $query = Post::where('id', '<', $id)->get();
+            $data_id = $query->max('id');
+
+        }
+
+
+        if($data_id)
+            $data = (object)[
+                'id' => $data_id,
+                'title' => $query->find($data_id)->post_title,
+            ];
+        else{
+            $data = (object)[
+                'id' => '',
+                'title' => '',
+            ];
+        }
+
+        return $data;
+
+    }
+
+
     public function index()
     {
         /*
@@ -72,7 +100,17 @@ class HomeController extends Controller
 
         $post = Post::find($id);
 
-        return view('contents.single-post', compact('post'));
+        /*
+            previous post
+        */ 
+        $previous = $this->nextPrevious($post->id, 'previous');
+
+        /*
+            next post
+        */ 
+        $next = $this->nextPrevious($post->id, 'next');
+
+        return view('contents.single-post', compact('post', 'next', 'previous'));
     }
 
     public function search(Request $request, Post $posts)

@@ -35,6 +35,16 @@
                     <p> {{ $post->post_content }} </p>
                 </div>
 
+                <div class="panel-body">
+                    @if($next->id)
+                        <a href="{{ route('singlePost', ['id' => $next->id, 'slug' => str_slug($next->title)]) }}" class="btn btn-primary btn-sm pull-right">{{$next->title}} <i class="fa fa-arrow-right"> </i></a>
+                    @endif
+
+                    @if($previous->id)
+                        <a href="{{ route('singlePost', ['id' => $previous->id, 'slug' => str_slug($previous->title)]) }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"> </i> {{$previous->title}} </a>
+                    @endif
+                </div>
+
                 
             </div>
         </div>
@@ -73,11 +83,6 @@
                     @endforeach
                 </div>
 
-                <div class="panel-body">
-                    
-                </div>
-
-                
             </div>
         </div>
     </div>
