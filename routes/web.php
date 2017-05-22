@@ -42,10 +42,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Ajax
     Route::get('ajax-kab/{provId}', 'ComboChainController@ProvId');
+    Route::post('post/comment', 'CommentController@store')->name('postComment');
 });
 
 Route::get('/', 'HomeController@index');
-Route::get('/{id}/{slug}', 'HomeController@singlePost')->name('singlePost');
+Route::get('portfolio/{id}/{slug}', 'HomeController@singlePost')->name('singlePost');
 Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/user/{id}/{slug}', 'HomeController@userHome')->name('userHome');
 

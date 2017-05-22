@@ -44,9 +44,11 @@
                         <a href="{{ route('singlePost', ['id' => $previous->id, 'slug' => str_slug($previous->title)]) }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"> </i> {{$previous->title}} </a>
                     @endif
                 </div>
-
-                
             </div>
+
+            
+            @include('forms.comment')
+
         </div>
 
         <div class="col-md-3">

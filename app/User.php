@@ -44,4 +44,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Allimage');
     }
+
+    // relation to comments
+    public function comments()
+    {
+        return $this->hasMany('App\Comments');
+    }
 }

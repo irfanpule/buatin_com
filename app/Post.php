@@ -41,6 +41,11 @@ class Post extends Model
         return $this->hasMany('App\Allimage');
     }
 
+    // retalation to Comment
+    public function comments()
+    {
+        return $this->hasMany('App\Comments');
+    }
 
 
     /*
@@ -57,4 +62,18 @@ class Post extends Model
 
         return $data;
     }
+
+
+    // create comment
+    public function addComment($request, $user_id)
+    {
+
+        Comments::create([
+            'post_id' => $request->post_id,
+            'user_id' => $user_id,
+            'comment_post' => $request->comment_post,
+        ]);
+    }
+
+
 }
