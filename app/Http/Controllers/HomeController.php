@@ -9,6 +9,7 @@ use Auth;
 use App\Categories;
 use App\DProvinsi;
 use Cache;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -83,11 +84,17 @@ class HomeController extends Controller
         */
         $img = ' ';
         
-
         $id = $request->id;
+        $user = User::find($id);
 
-        $posts = Post::with('user.umetas.kab_kota.provinsi', 'post_metas.category')->where('user_id', $id)->orderBy('created_at', 'desc')->paginate(8); 
-        return view('home', compact('posts','img'));
+
+        if(str_slug($user->display_name) == $slug && $user->id == $id)
+        {
+            $posts = Post::with('user.umetas.kab_kota.provinsi', 'post_metas.category')->where('user_id', $id)->orderBy('created_at', 'desc')->paginate(8); 
+            return view('home', compact('posts','img'));
+        }
+
+        return "404 not found";
     }
 
 
@@ -97,20 +104,25 @@ class HomeController extends Controller
         /*
             show single post
         */
-
         $post = Post::find($id);
 
-        /*
+        if(str_slug($post->post_title) == $slug && $post->id == $id)
+        {
+            /*
             previous post
-        */ 
-        $previous = $this->nextPrevious($post->id, 'previous');
+            */ 
+            $previous = $this->nextPrevious($post->id, 'previous');
 
-        /*
-            next post
-        */ 
-        $next = $this->nextPrevious($post->id, 'next');
+            /*
+                next post
+            */ 
+            $next = $this->nextPrevious($post->id, 'next');
 
-        return view('contents.single-post', compact('post', 'next', 'previous'));
+            return view('contents.single-post', compact('post', 'next', 'previous'));
+        }
+
+        return "404 not found";
+        
     }
 
     public function search(Request $request, Post $posts)
