@@ -26,22 +26,6 @@ buatin is a platform that can bring someone who has the ability to make somethin
 This project uses two databases. First database for main data. Second database for region data.
 - `Create main and region database`
 - `Import database/db daerah.sql to region database`
-- `Copy this and paste into config/database.php`
-----
-    'mysql_daerah' => [
-            'driver' => 'mysql',
-            'host' => env('DB_HOST2', '127.0.0.1'),
-            'port' => env('DB_PORT2', '3306'),
-            'database' => env('DB_DATABASE2', 'forge'),
-            'username' => env('DB_USERNAME2', 'forge'),
-            'password' => env('DB_PASSWORD2', ''),
-            'charset' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix' => '',
-            'strict' => true,
-            'engine' => null,
-        ],
-
 - `Copy this and paste into .env.`
 ----
     DB_CONNECTION=mysql_daerah
