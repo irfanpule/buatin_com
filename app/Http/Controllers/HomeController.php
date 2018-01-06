@@ -54,12 +54,12 @@ class HomeController extends Controller
         */
         $img = ' ';
         $minutes = 1;
-        
 
-        $categories = Categories::all()->pluck('category', 'id');          
-        $provinsi = DProvinsi::all()->pluck('nama', 'id_prov');          
 
-        $posts = Post::with('user.umetas.kab_kota.provinsi', 'post_metas.category')->orderBy('created_at', 'desc')->paginate(8); 
+        $categories = Categories::all()->pluck('category', 'id');
+        $provinsi = DProvinsi::all()->pluck('nama', 'id_prov');
+
+        $posts = Post::with('user.umetas.kab_kota.provinsi', 'post_metas.category')->orderBy('created_at', 'desc')->paginate(8);
         return view('welcome', compact('posts','img', 'categories', 'provinsi'));
     }
 
@@ -70,10 +70,10 @@ class HomeController extends Controller
         */
         $img = ' ';
 
-        $id = Auth::user()->id;
+        $user = Auth::user();
 
-        $posts = Post::with('user.umetas.kab_kota.provinsi', 'post_metas.category')->where('user_id', $id)->orderBy('created_at', 'desc')->paginate(8); 
-        return view('home', compact('posts','img'));
+        $posts = Post::with('user.umetas.kab_kota.provinsi', 'post_metas.category')->where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(8);
+        return view('home', compact('posts','img','user'));
     }
 
 
@@ -83,15 +83,15 @@ class HomeController extends Controller
             show all post pagination 8
         */
         $img = ' ';
-        
+
         $id = $request->id;
         $user = User::find($id);
 
 
         if(str_slug($user->display_name) == $slug && $user->id == $id)
         {
-            $posts = Post::with('user.umetas.kab_kota.provinsi', 'post_metas.category')->where('user_id', $id)->orderBy('created_at', 'desc')->paginate(8); 
-            return view('home', compact('posts','img'));
+            $posts = Post::with('user.umetas.kab_kota.provinsi', 'post_metas.category')->where('user_id', $id)->orderBy('created_at', 'desc')->paginate(8);
+            return view('home', compact('posts','img','user'));
         }
 
         return "404 not found";
@@ -100,7 +100,7 @@ class HomeController extends Controller
 
 
     public function singlePost($id, $slug)
-    {   
+    {
         /*
             show single post
         */
@@ -110,23 +110,23 @@ class HomeController extends Controller
         {
             /*
             previous post
-            */ 
+            */
             $previous = $this->nextPrevious($post->id, 'previous');
 
             /*
                 next post
-            */ 
+            */
             $next = $this->nextPrevious($post->id, 'next');
 
             return view('contents.single-post', compact('post', 'next', 'previous'));
         }
 
         return "404 not found";
-        
+
     }
 
     public function search(Request $request, Post $posts)
-    {   
+    {
         // manual search without engine
         $location = $request->get('location');
         $keyword = $request->get('key');
@@ -147,7 +147,7 @@ class HomeController extends Controller
         // filter by keyword
         if($request->has('key')){
             $search->where('post_title', 'like', '%'.$keyword.'%')
-                    ->orWhere('post_content', 'like', '%'.$keyword.'%') 
+                    ->orWhere('post_content', 'like', '%'.$keyword.'%')
                     ->whereHas('post_metas', function($query) use ($keyword){
                         $query->where('meta_value', 'like', '%'.$keyword.'%');
                     });
@@ -157,7 +157,7 @@ class HomeController extends Controller
             $search->whereHas('post_metas', function($query) use ($category){
                         $query->where('meta_value', $category);
                     });
-                    
+
         }
         // filter by price
         if($request->has('max_price')){
@@ -166,7 +166,7 @@ class HomeController extends Controller
 
         //result query
         $posts =  $search->with('user.umetas.kab_kota.provinsi', 'post_metas.category')->orderBy('created_at', 'desc')->paginate(12);
-       
+
 
         return view('contents.search', compact('posts', 'img'));
     }
